@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "https://xilonet-signa.netlify.app/", "http://localhost:5173/"
+    origins "*"
 
     resource "*",
       headers: :any,
