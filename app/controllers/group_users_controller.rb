@@ -10,6 +10,10 @@ class GroupUsersController < ApplicationController
         end
     end
 
+    def destroy
+      @group_user.destroy
+    end
+
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_group_user
@@ -18,6 +22,6 @@ class GroupUsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_user_params
-      params.require(:group_user).permit(:group_id, :user_id)
+      params.require(:group_user).permit(:group_id, :user_id, :group_admin)
     end
 end
