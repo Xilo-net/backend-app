@@ -4,7 +4,13 @@ class GroupResourcesController < ApplicationController
   # GET /group_resources
   def index
     index_hash = {}
-    @group_resources = GroupResource.all
+    group_id = params[:group_id]
+    if group_id
+      @group_resources = GroupResource.where(group_id: group_id)
+    else
+      @group_resources = GroupResource.all
+    end
+
     @group_resources.each do |group_resource|
       index_hash.has_key?(group_resource.category) ? index_hash[group_resource.category] << group_resource : index_hash[group_resource.category] = [group_resource]
     end
