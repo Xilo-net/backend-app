@@ -1,5 +1,11 @@
 class GroupUsersController < ApplicationController
     before_action :set_group_user, only: %i[ show update destroy ]
+    
+    def index
+      @group_users = GroupUser.all
+      render json: @group_users, include: [:user, :group]
+    end
+
     def create
         @group_user = GroupUser.new(group_user_params)
 
