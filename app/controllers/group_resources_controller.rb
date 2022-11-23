@@ -3,9 +3,12 @@ class GroupResourcesController < ApplicationController
 
   # GET /group_resources
   def index
+    index_hash = {}
     @group_resources = GroupResource.all
-
-    render json: @group_resources
+    @group_resources.each do |group_resource|
+      index_hash.has_key?(group_resource.category) ? index_hash[group_resource.category] << group_resource : index_hash[group_resource.category] = [group_resource]
+    end
+    render json: index_hash
   end
 
   # GET /group_resources/1
