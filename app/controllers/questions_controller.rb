@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authorize_request
   before_action :set_question, only: %i[ show update destroy ]
 
   # GET /questions

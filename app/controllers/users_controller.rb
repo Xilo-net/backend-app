@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  wrap_parameters :user, include: [:password, :password_confirmation, :first_name, :last_name, :email, :admin, :points, :progress => []]
+  before_action :authorize_request, except: :create
   before_action :set_user, only: %i[ show update destroy ]
 
   # GET /users
@@ -47,6 +49,6 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       # params.fetch(:user, {})
-      params.require(:user).permit(:first_name, :last_name, :email, :admin, :points, :progress => [])
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin, :points,:progress => [])
     end
 end

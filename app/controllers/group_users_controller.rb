@@ -1,4 +1,5 @@
 class GroupUsersController < ApplicationController
+    before_action :authorize_request
     before_action :set_group_user, only: %i[ show update destroy ]
     
     def index

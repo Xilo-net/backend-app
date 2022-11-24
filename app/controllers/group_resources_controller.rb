@@ -1,4 +1,5 @@
 class GroupResourcesController < ApplicationController
+  before_action :authorize_request
   before_action :set_group_resource, only: %i[ show update destroy ]
 
   # GET /group_resources

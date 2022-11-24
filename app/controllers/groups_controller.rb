@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :authorize_request
   before_action :set_group, only: %i[ show update destroy ]
 
   # GET /groups
