@@ -5,8 +5,12 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
-
+    user_email = params[:email]
+    if user_email
+      @users = User.find_by_email(user_email)
+    else
+      @users = User.all
+    end
     render json: @users, include: [:groups]
   end
 
